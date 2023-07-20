@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dbt_c360_silver_users
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+      - name: churn
+        tests:
+          - accepted_values:
+              values: [1, 0]
+              
+  - name: dbt_c360_silver_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('dbt_c360_silver_users')
+              field: user_id
+              
+              
+              
+              
+              
+              
+              
+              
