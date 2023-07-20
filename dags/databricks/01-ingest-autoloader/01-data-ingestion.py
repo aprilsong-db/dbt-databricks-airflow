@@ -18,7 +18,9 @@
 
 # COMMAND ----------
 
-base_s3_path = "s3://oetrta/asong/dbdemos/dbt-retail"
+# base_s3_path = "s3://oetrta/asong/dbdemos/dbt-retail"
+dbutils.widgets.text("base_s3_path", "YOUR_S3_PATH", "Base S3 Directory")
+base_s3_path = dbutils.widgets.get("base_s3_path")
 
 # COMMAND ----------
 
