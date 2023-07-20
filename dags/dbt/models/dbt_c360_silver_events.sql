@@ -1,7 +1,6 @@
 {{
  config(materialized = 'table', file_format = 'delta')
 }}
-
 select 
   user_id,
   session_id,
@@ -10,4 +9,4 @@ select
   platform,
   action,
   url
-from dbdemos.dbt_c360_bronze_events
+from {{ var("uc_schema") }}.dbt_c360_bronze_events

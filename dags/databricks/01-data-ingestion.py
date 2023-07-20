@@ -18,8 +18,8 @@
 
 # COMMAND ----------
 
-base_s3_path = "s3://oetrta/asong/dbdemos/dbt-retail"
-
+import os
+from config import S3_BASE_PATH, DBT_TARGET_UC_CATALOG, DBT_TARGET_UC_SCHEMA
 # COMMAND ----------
 
 # DBTITLE 1,Incrementally ingest all folders
@@ -28,60 +28,51 @@ def incrementally_ingest_folder(path, format, table):
         spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", format)
         .option("cloudFiles.inferColumnTypes", "true")
-        .option("cloudFiles.schemaLocation", f"{base_s3_path}/_schemas/{table}")
+        .option(
+            "cloudFiles.schemaLocation", os.path.join(S3_BASE_PATH, "_schemas", table)
+        )
         .load(path)
         .writeStream.format("delta")
-        .option("checkpointLocation", f"{base_s3_path}/_checkpoints/{table}")
+        .option(
+            "checkpointLocation", os.path.join(S3_BASE_PATH, "_checkpoints", table)
+        )
         .trigger(availableNow=True)
         .outputMode("append")
         .toTable(table)
     )
 
 
-spark.sql("use catalog asong_dev;")
-# spark.sql('drop database dbdemos cascade;')
-# spark.sql('create database if not exists dbdemos;')
+spark.sql(f"create catalog if not exists {DBT_TARGET_UC_CATALOG};")
+spark.sql(f"create schema if not exists {DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA};")
 
 incrementally_ingest_folder(
-    f"{base_s3_path}/users", "json", "dbdemos.dbt_c360_bronze_users"
+    os.path.join(S3_BASE_PATH, "users"),
+    "json",
+    f"{DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA}.dbt_c360_bronze_users",
 )
 incrementally_ingest_folder(
-    f"{base_s3_path}/orders", "json", "dbdemos.dbt_c360_bronze_orders"
+    os.path.join(S3_BASE_PATH, "orders"),
+    "json",
+    f"{DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA}.dbt_c360_bronze_orders",
 )
 incrementally_ingest_folder(
-    f"{base_s3_path}/events", "csv", "dbdemos.dbt_c360_bronze_events"
+    os.path.join(S3_BASE_PATH, "events"),
+    "csv",
+    f"{DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA}.dbt_c360_bronze_events",
 )
 
 print(
     "Congrats, our new data has been consumed and incrementally added to our bronze tables"
 )
 
-# COMMAND ----------
-
-incrementally_ingest_folder(
-    "s3://oetrta//asong/dbdemos/dbt-retail/users",
-    "json",
-    "dbdemos.dbt_c360_bronze_users",
-)
-incrementally_ingest_folder(
-    "s3://oetrta//asong/dbdemos/dbt-retail/orders",
-    "json",
-    "dbdemos.dbt_c360_bronze_orders",
-)
-incrementally_ingest_folder(
-    "s3://oetrta//asong/dbdemos/dbt-retail/events",
-    "csv",
-    "dbdemos.dbt_c360_bronze_events",
-)
 
 # COMMAND ----------
-
-# MAGIC %sql
-# MAGIC select count(*) from dbdemos.dbt_c360_bronze_events
+display(spark.sql(f"select count(*) from {DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA}.dbt_c360_bronze_events"))
 
 # COMMAND ----------
-
-# MAGIC %sql
-# MAGIC select count(*) from dbdemos.dbt_c360_bronze_events
+#not expected to change in this demo
+display(spark.sql(f"select count(*) from {DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA}.dbt_c360_bronze_users"))
 
 # COMMAND ----------
+display(spark.sql(f"select count(*) from {DBT_TARGET_UC_CATALOG}.{DBT_TARGET_UC_SCHEMA}.dbt_c360_bronze_orders"))
+

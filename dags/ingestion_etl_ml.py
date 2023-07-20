@@ -1,5 +1,4 @@
 from datetime import timedelta
-
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.providers.databricks.operators.databricks import (
@@ -13,23 +12,25 @@ import os
 
 # We're hardcoding this value here for the purpose of the demo, but in a production environment this
 # would probably come from a config file and/or environment variables!
-DBT_PROJECT_DIR = "/usr/local/airflow/dags/dbt"
-DATABRICKS_CONN_ID = "databricks_conn"
-ML_CHURN_PRED_JOB_ID = 172266008259046
+DBT_PROJECT_DIR = os.environ.get("DBT_PROJECT_DIR")
+DATABRICKS_CONN_ID = os.environ.get("AIRFLOW_DATABRICKS_CONN_ID")
+S3_BASE_PATH = os.environ.get("S3_BASE_PATH")
+DBT_TARGET_UC_CATALOG = os.environ.get("DBT_TARGET_UC_CATALOG")
+DBT_TARGET_UC_SCHEMA = os.environ.get("DBT_TARGET_UC_SCHEMA")
 
 autoloader_ingestion_job = {
-    "name": "autoloader_ingestion",
+    "name": "databricks_ingest",
     "email_notifications": {"no_alert_for_skipped_runs": False},
     "webhook_notifications": {},
     "timeout_seconds": 0,
     "max_concurrent_runs": 1,
     "tasks": [
         {
-            "task_key": "autoloader_ingestion",
+            "task_key": "databricks_ingest",
             "run_if": "ALL_SUCCESS",
             "notebook_task": {
-                "notebook_path": "dags/databricks/01-ingest-autoloader/01-data-ingestion",
-                "source": "GIT",
+                "notebook_path": "dags/databricks/01-data-ingestion",
+                "source": "GIT"
             },
             "new_cluster": {
                 "spark_version": "13.2.x-cpu-ml-scala2.12",
@@ -40,6 +41,11 @@ autoloader_ingestion_job = {
                     "spot_bid_price_percent": 100,
                     "ebs_volume_count": 0,
                 },
+            "spark_env_vars": {
+                "DBT_TARGET_UC_CATALOG": DBT_TARGET_UC_CATALOG,
+                "DBT_TARGET_UC_SCHEMA": DBT_TARGET_UC_SCHEMA,
+                "S3_BASE_PATH": S3_BASE_PATH,
+            },
                 "node_type_id": "i3.xlarge",
                 "enable_elastic_disk": False,
                 "data_security_mode": "SINGLE_USER",
@@ -69,7 +75,7 @@ ml_churn_pred_job = {
             "task_key": "churn-prediction",
             "run_if": "ALL_SUCCESS",
             "notebook_task": {
-                "notebook_path": "dags/databricks/03-ml-predict-churn/03-churn-prediction",
+                "notebook_path": "dags/databricks/03-churn-prediction",
                 "source": "GIT",
             },
             "new_cluster": {
@@ -107,7 +113,9 @@ ml_churn_pred_job = {
 
 
 with DAG(
-    dag_id="autoloader_dbt_dag", start_date=days_ago(2), schedule_interval=None
+    dag_id="autoloader_dbt_dag",
+    start_date=days_ago(2),
+    schedule_interval=None,
 ) as dag:
 
     databricks_ingest = DatabricksSubmitRunOperator(
@@ -126,10 +134,10 @@ with DAG(
         bash_command=f"dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    databricks_churn_prediction = DatabricksRunNowOperator(
+    databricks_churn_prediction = DatabricksSubmitRunOperator(
         task_id="databricks_ml_churn_pred",
         databricks_conn_id=DATABRICKS_CONN_ID,
-        job_id=ML_CHURN_PRED_JOB_ID,
+        json=ml_churn_pred_job,
     )
 
     databricks_ingest >> dbt_run >> dbt_test >> databricks_churn_prediction

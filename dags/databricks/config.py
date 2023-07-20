@@ -1,0 +1,6 @@
+import os
+
+DATA_FREQUENCY_SECONDS = int(os.environ.get("DATA_FREQUENCY_SECONDS", 60 * 10))
+S3_BASE_PATH = os.environ.get("S3_BASE_PATH")
+DBT_TARGET_UC_CATALOG = os.environ.get("DBT_TARGET_UC_CATALOG")
+DBT_TARGET_UC_SCHEMA = os.environ.get("DBT_TARGET_UC_SCHEMA")

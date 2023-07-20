@@ -19,6 +19,9 @@ clean-targets:
 
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
+vars:
+  uc_schema: "{{ env_var('DBT_TARGET_UC_SCHEMA') }}"
+
 models:
   dbdemos_dbt_c360:
       materialized: table

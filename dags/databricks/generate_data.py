@@ -1,3 +1,8 @@
+"""
+This file contains a collection of functions to generate and manipulate sample data for a 
+ecommerce application.The customer data is generated using the Faker library to create 
+randomized data for testing and demonstration purposes. 
+"""
 from pyspark.sql import functions as F
 from pyspark.sql.session import SparkSession
 from faker import Faker
