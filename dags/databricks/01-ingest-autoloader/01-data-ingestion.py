@@ -10,7 +10,7 @@
 # MAGIC
 # MAGIC In this example, we'll consume files from a blob storage. However we could easily have consume from any other system like a kafka queue.
 # MAGIC
-# MAGIC We'll be using Databricks Autoloader (`cloudFile` format) to incrementally load new data and append them to our raw tables. Re-running this job will only consume new data, handling all schema inference, evolution and scalability for us. 
+# MAGIC We'll be using Databricks Autoloader (`cloudFile` format) to incrementally load new data and append them to our raw tables. Re-running this job will only consume new data, handling all schema inference, evolution and scalability for us.
 # MAGIC
 # MAGIC For more details on Autoloader, install `dbdemos.install('auto-loader')`
 # MAGIC
@@ -24,34 +24,55 @@ base_s3_path = "s3://oetrta/asong/dbdemos/dbt-retail"
 
 # DBTITLE 1,Incrementally ingest all folders
 def incrementally_ingest_folder(path, format, table):
-    (spark.readStream
-              .format("cloudFiles")
-              .option("cloudFiles.format", format)
-              .option("cloudFiles.inferColumnTypes", "true")
-              .option("cloudFiles.schemaLocation", f"{base_s3_path}/_schemas/{table}")
-              .load(path)
-           .writeStream
-              .format("delta")
-              .option("checkpointLocation", f"{base_s3_path}/_checkpoints/{table}")
-              .trigger(availableNow = True)
-              .outputMode("append")
-              .toTable(table))
+    (
+        spark.readStream.format("cloudFiles")
+        .option("cloudFiles.format", format)
+        .option("cloudFiles.inferColumnTypes", "true")
+        .option("cloudFiles.schemaLocation", f"{base_s3_path}/_schemas/{table}")
+        .load(path)
+        .writeStream.format("delta")
+        .option("checkpointLocation", f"{base_s3_path}/_checkpoints/{table}")
+        .trigger(availableNow=True)
+        .outputMode("append")
+        .toTable(table)
+    )
 
-spark.sql('use catalog asong_dev;')
+
+spark.sql("use catalog asong_dev;")
 # spark.sql('drop database dbdemos cascade;')
 # spark.sql('create database if not exists dbdemos;')
 
-incrementally_ingest_folder(f"{base_s3_path}/users", 'json', 'dbdemos.dbt_c360_bronze_users')
-incrementally_ingest_folder(f"{base_s3_path}/orders", 'json', 'dbdemos.dbt_c360_bronze_orders')
-incrementally_ingest_folder(f"{base_s3_path}/events", 'csv', 'dbdemos.dbt_c360_bronze_events')
+incrementally_ingest_folder(
+    f"{base_s3_path}/users", "json", "dbdemos.dbt_c360_bronze_users"
+)
+incrementally_ingest_folder(
+    f"{base_s3_path}/orders", "json", "dbdemos.dbt_c360_bronze_orders"
+)
+incrementally_ingest_folder(
+    f"{base_s3_path}/events", "csv", "dbdemos.dbt_c360_bronze_events"
+)
 
-print('Congrats, our new data has been consumed and incrementally added to our bronze tables')
+print(
+    "Congrats, our new data has been consumed and incrementally added to our bronze tables"
+)
 
 # COMMAND ----------
 
-incrementally_ingest_folder('s3://oetrta//asong/dbdemos/dbt-retail/users', 'json', 'dbdemos.dbt_c360_bronze_users')
-incrementally_ingest_folder('s3://oetrta//asong/dbdemos/dbt-retail/orders', 'json', 'dbdemos.dbt_c360_bronze_orders')
-incrementally_ingest_folder('s3://oetrta//asong/dbdemos/dbt-retail/events', 'csv', 'dbdemos.dbt_c360_bronze_events')
+incrementally_ingest_folder(
+    "s3://oetrta//asong/dbdemos/dbt-retail/users",
+    "json",
+    "dbdemos.dbt_c360_bronze_users",
+)
+incrementally_ingest_folder(
+    "s3://oetrta//asong/dbdemos/dbt-retail/orders",
+    "json",
+    "dbdemos.dbt_c360_bronze_orders",
+)
+incrementally_ingest_folder(
+    "s3://oetrta//asong/dbdemos/dbt-retail/events",
+    "csv",
+    "dbdemos.dbt_c360_bronze_events",
+)
 
 # COMMAND ----------
 
@@ -64,5 +85,3 @@ incrementally_ingest_folder('s3://oetrta//asong/dbdemos/dbt-retail/events', 'csv
 # MAGIC select count(*) from dbdemos.dbt_c360_bronze_events
 
 # COMMAND ----------
-
-
