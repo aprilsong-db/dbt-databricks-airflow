@@ -15,7 +15,14 @@ import os
 # would probably come from a config file and/or environment variables!
 DBT_PROJECT_DIR = "/usr/local/airflow/dags/dbt"
 DATABRICKS_CONN_ID = "databricks_conn"
-ML_CHURN_PRED_JOB_ID = 172266008259046
+TARGET_S3_PATH = "s3://oetrta/asong/dbdemos/dbt-retail/" #TODO: change to airflow run config
+
+default_args = {
+    "owner": "airflow",
+    "email": ["airflow@example.com"],
+    "depends_on_past": False,
+}
+
 
 autoloader_ingestion_job = {
     "name": "autoloader_ingestion",
@@ -30,6 +37,7 @@ autoloader_ingestion_job = {
             "notebook_task": {
                 "notebook_path": "dags/databricks/01-ingest-autoloader/01-data-ingestion",
                 "source": "GIT",
+                "base_parameters": {"base_s3_path":TARGET_S3_PATH}
             },
             "new_cluster": {
                 "spark_version": "13.2.x-cpu-ml-scala2.12",
@@ -107,7 +115,10 @@ ml_churn_pred_job = {
 
 
 with DAG(
-    dag_id="autoloader_dbt_dag", start_date=days_ago(2), schedule_interval=None
+    dag_id="autoloader_dbt_dag",
+    start_date=days_ago(2),
+    schedule_interval=None,
+    default_args=default_args,
 ) as dag:
 
     databricks_ingest = DatabricksSubmitRunOperator(
@@ -126,10 +137,10 @@ with DAG(
         bash_command=f"dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    databricks_churn_prediction = DatabricksRunNowOperator(
+    databricks_churn_prediction = DatabricksSubmitRunOperator(
         task_id="databricks_ml_churn_pred",
         databricks_conn_id=DATABRICKS_CONN_ID,
-        job_id=ML_CHURN_PRED_JOB_ID,
+        json=ml_churn_pred_job,
     )
 
     databricks_ingest >> dbt_run >> dbt_test >> databricks_churn_prediction

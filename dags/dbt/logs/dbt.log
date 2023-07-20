@@ -2772,3 +2772,721 @@ having count(*) > 1
 [0m00:08:09.426423 [debug] [MainThread]: Command `dbt test` succeeded at 00:08:09.426295 after 12.35 seconds
 [0m00:08:09.427198 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa63cbd60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff91bfec20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff91b8eb90>]}
 [0m00:08:09.427986 [debug] [MainThread]: Flushing usage events
+[0m17:04:09.271243 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa9267e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa7b54670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa7b54370>]}
+
+
+============================== 17:04:09.275537 | 09462c57-bacf-4147-a4b0-7fc9f1850552 ==============================
+[0m17:04:09.275537 [info ] [MainThread]: Running with dbt=1.5.3
+[0m17:04:09.276256 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/usr/local/airflow/dags/dbt/logs', 'debug': 'False', 'profiles_dir': '/usr/local/airflow/dags/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m17:04:09.833480 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa7b1b220>]}
+[0m17:04:09.842060 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff94ac2f50>]}
+[0m17:04:09.842496 [info ] [MainThread]: Registered adapter: databricks=1.5.5
+[0m17:04:09.851799 [debug] [MainThread]: checksum: d91324b50612e0c4823cec6657ec795d80c11aba9d5b50e83fb26de63277dec4, vars: {}, profile: , target: , version: 1.5.3
+[0m17:04:09.879218 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:04:09.879876 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:04:09.880563 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.dbdemos_dbt_c360.staging
+[0m17:04:09.884760 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff948ce0b0>]}
+[0m17:04:09.898523 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff948a0be0>]}
+[0m17:04:09.899101 [info ] [MainThread]: Found 4 models, 6 tests, 0 snapshots, 0 analyses, 415 macros, 0 operations, 3 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m17:04:09.899665 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff948a0bb0>]}
+[0m17:04:09.900806 [info ] [MainThread]: 
+[0m17:04:09.901611 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m17:04:09.902824 [debug] [ThreadPool]: Acquiring new databricks connection 'list_asong_dev'
+[0m17:04:09.903431 [debug] [ThreadPool]: Using databricks connection "list_asong_dev"
+[0m17:04:09.903867 [debug] [ThreadPool]: On list_asong_dev: GetSchemas(database=`asong_dev`, schema=None)
+[0m17:04:09.904273 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:04:10.099362 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-71c0-1334-9a50-96ed184c1c33
+[0m17:04:11.301168 [debug] [ThreadPool]: SQL status: OK in 1.399999976158142 seconds
+[0m17:04:11.319255 [debug] [ThreadPool]: On list_asong_dev: Close
+[0m17:04:11.321173 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-71c0-1334-9a50-96ed184c1c33
+[0m17:04:11.397129 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_asong_dev, now create_asong_dev_dbdemos)
+[0m17:04:11.400315 [debug] [ThreadPool]: Creating schema "database: "asong_dev"
+schema: "dbdemos"
+"
+[0m17:04:11.420128 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:11.421449 [debug] [ThreadPool]: Using databricks connection "create_asong_dev_dbdemos"
+[0m17:04:11.422266 [debug] [ThreadPool]: On create_asong_dev_dbdemos: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "connection_name": "create_asong_dev_dbdemos"} */
+create schema if not exists `asong_dev`.`dbdemos`
+  
+[0m17:04:11.423036 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:04:11.646737 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-72ac-169d-8248-d3e8bfa02b0d
+[0m17:04:11.819564 [debug] [ThreadPool]: SQL status: OK in 0.4000000059604645 seconds
+[0m17:04:11.825482 [debug] [ThreadPool]: Spark adapter: NotImplemented: commit
+[0m17:04:11.826910 [debug] [ThreadPool]: On create_asong_dev_dbdemos: ROLLBACK
+[0m17:04:11.830786 [debug] [ThreadPool]: Databricks adapter: NotImplemented: rollback
+[0m17:04:11.832140 [debug] [ThreadPool]: On create_asong_dev_dbdemos: Close
+[0m17:04:11.833718 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-72ac-169d-8248-d3e8bfa02b0d
+[0m17:04:11.917480 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_asong_dev_dbdemos, now list_asong_dev_dbdemos)
+[0m17:04:11.938071 [debug] [ThreadPool]: Using databricks connection "list_asong_dev_dbdemos"
+[0m17:04:11.939125 [debug] [ThreadPool]: On list_asong_dev_dbdemos: GetTables(database=asong_dev, schema=dbdemos, identifier=None)
+[0m17:04:11.939835 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:04:12.127736 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-72f4-1dc6-a5ef-ed29da8809be
+[0m17:04:12.871193 [debug] [ThreadPool]: SQL status: OK in 0.9300000071525574 seconds
+[0m17:04:12.875048 [debug] [ThreadPool]: On list_asong_dev_dbdemos: Close
+[0m17:04:12.875787 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-72f4-1dc6-a5ef-ed29da8809be
+[0m17:04:12.940640 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_asong_dev_dbdemos, now list_asong_dev_dbdemos_dbt_test__audit)
+[0m17:04:12.944737 [debug] [ThreadPool]: Using databricks connection "list_asong_dev_dbdemos_dbt_test__audit"
+[0m17:04:12.945632 [debug] [ThreadPool]: On list_asong_dev_dbdemos_dbt_test__audit: GetTables(database=asong_dev, schema=dbdemos_dbt_test__audit, identifier=None)
+[0m17:04:12.946342 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:04:13.119958 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-738d-1c04-af62-a5d54302f919
+[0m17:04:14.060501 [debug] [ThreadPool]: SQL status: OK in 1.1100000143051147 seconds
+[0m17:04:14.063911 [debug] [ThreadPool]: On list_asong_dev_dbdemos_dbt_test__audit: Close
+[0m17:04:14.064591 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-738d-1c04-af62-a5d54302f919
+[0m17:04:14.131569 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff948a0880>]}
+[0m17:04:14.133682 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:14.134826 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m17:04:14.137834 [info ] [MainThread]: Concurrency: 1 threads (target='local')
+[0m17:04:14.142117 [info ] [MainThread]: 
+[0m17:04:14.168780 [debug] [Thread-1 (]: Began running node model.dbdemos_dbt_c360.dbt_c360_silver_events
+[0m17:04:14.170174 [info ] [Thread-1 (]: 1 of 4 START sql table model dbdemos.dbt_c360_silver_events .................... [RUN]
+[0m17:04:14.171632 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_asong_dev_dbdemos_dbt_test__audit, now model.dbdemos_dbt_c360.dbt_c360_silver_events)
+[0m17:04:14.172525 [debug] [Thread-1 (]: Began compiling node model.dbdemos_dbt_c360.dbt_c360_silver_events
+[0m17:04:14.176301 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbdemos_dbt_c360.dbt_c360_silver_events"
+[0m17:04:14.180455 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_silver_events (compile): 17:04:14.173200 => 17:04:14.180230
+[0m17:04:14.181259 [debug] [Thread-1 (]: Began executing node model.dbdemos_dbt_c360.dbt_c360_silver_events
+[0m17:04:14.194070 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:14.194828 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_silver_events"
+[0m17:04:14.195418 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_events: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_silver_events"} */
+
+      describe extended `asong_dev`.`dbdemos`.`dbt_c360_silver_events`
+  
+[0m17:04:14.195992 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:14.386205 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-744e-17e2-a70e-4e5eb73bf481
+[0m17:04:14.810080 [debug] [Thread-1 (]: SQL status: OK in 0.6100000143051147 seconds
+[0m17:04:14.842186 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbdemos_dbt_c360.dbt_c360_silver_events"
+[0m17:04:14.849468 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_silver_events"
+[0m17:04:14.850075 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_events: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_silver_events"} */
+
+  
+    
+        create or replace table `asong_dev`.`dbdemos`.`dbt_c360_silver_events`
+      
+      
+    using delta
+      
+      
+      
+      
+      
+      
+      as
+      
+
+select 
+  user_id,
+  session_id,
+  event_id,
+  `date`,
+  platform,
+  action,
+  url
+from dbdemos.dbt_c360_bronze_events
+  
+[0m17:04:24.875722 [debug] [Thread-1 (]: SQL status: OK in 10.029999732971191 seconds
+[0m17:04:25.019050 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_silver_events (execute): 17:04:14.181854 => 17:04:25.018776
+[0m17:04:25.020453 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_events: ROLLBACK
+[0m17:04:25.021254 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:25.022011 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_events: Close
+[0m17:04:25.022851 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-744e-17e2-a70e-4e5eb73bf481
+[0m17:04:25.086075 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9459abc0>]}
+[0m17:04:25.088748 [info ] [Thread-1 (]: 1 of 4 OK created sql table model dbdemos.dbt_c360_silver_events ............... [[32mOK[0m in 10.91s]
+[0m17:04:25.090592 [debug] [Thread-1 (]: Finished running node model.dbdemos_dbt_c360.dbt_c360_silver_events
+[0m17:04:25.091930 [debug] [Thread-1 (]: Began running node model.dbdemos_dbt_c360.dbt_c360_silver_orders
+[0m17:04:25.093490 [info ] [Thread-1 (]: 2 of 4 START sql table model dbdemos.dbt_c360_silver_orders .................... [RUN]
+[0m17:04:25.095313 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbdemos_dbt_c360.dbt_c360_silver_events, now model.dbdemos_dbt_c360.dbt_c360_silver_orders)
+[0m17:04:25.096373 [debug] [Thread-1 (]: Began compiling node model.dbdemos_dbt_c360.dbt_c360_silver_orders
+[0m17:04:25.101400 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbdemos_dbt_c360.dbt_c360_silver_orders"
+[0m17:04:25.106532 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_silver_orders (compile): 17:04:25.097164 => 17:04:25.106292
+[0m17:04:25.107504 [debug] [Thread-1 (]: Began executing node model.dbdemos_dbt_c360.dbt_c360_silver_orders
+[0m17:04:25.111393 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:25.112081 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_silver_orders"
+[0m17:04:25.112839 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_orders: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_silver_orders"} */
+
+      describe extended `asong_dev`.`dbdemos`.`dbt_c360_silver_orders`
+  
+[0m17:04:25.113399 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:25.300905 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-7ace-181c-9425-3cf4e1d453f2
+[0m17:04:25.831302 [debug] [Thread-1 (]: SQL status: OK in 0.7200000286102295 seconds
+[0m17:04:25.835896 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbdemos_dbt_c360.dbt_c360_silver_orders"
+[0m17:04:25.837673 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_silver_orders"
+[0m17:04:25.838193 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_orders: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_silver_orders"} */
+
+  
+    
+        create or replace table `asong_dev`.`dbdemos`.`dbt_c360_silver_orders`
+      
+      
+    using delta
+      
+      
+      
+      
+      
+      
+      as
+      
+
+--notes: order data cleaned and anonymized for analysis -- 
+select
+  cast(amount as int),
+  `id` as order_id,
+  user_id,
+  cast(item_count as int),
+  to_timestamp(transaction_date, "MM-dd-yyyy HH:mm:ss") as creation_date
+from dbdemos.dbt_c360_bronze_orders
+  
+[0m17:04:30.880539 [debug] [Thread-1 (]: SQL status: OK in 5.039999961853027 seconds
+[0m17:04:30.886333 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_silver_orders (execute): 17:04:25.108261 => 17:04:30.886024
+[0m17:04:30.888009 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_orders: ROLLBACK
+[0m17:04:30.889418 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:30.890855 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_orders: Close
+[0m17:04:30.892372 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-7ace-181c-9425-3cf4e1d453f2
+[0m17:04:30.958593 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff947c4910>]}
+[0m17:04:30.959996 [info ] [Thread-1 (]: 2 of 4 OK created sql table model dbdemos.dbt_c360_silver_orders ............... [[32mOK[0m in 5.86s]
+[0m17:04:30.961066 [debug] [Thread-1 (]: Finished running node model.dbdemos_dbt_c360.dbt_c360_silver_orders
+[0m17:04:30.961818 [debug] [Thread-1 (]: Began running node model.dbdemos_dbt_c360.dbt_c360_silver_users
+[0m17:04:30.962559 [info ] [Thread-1 (]: 3 of 4 START sql table model dbdemos.dbt_c360_silver_users ..................... [RUN]
+[0m17:04:30.963477 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbdemos_dbt_c360.dbt_c360_silver_orders, now model.dbdemos_dbt_c360.dbt_c360_silver_users)
+[0m17:04:30.964125 [debug] [Thread-1 (]: Began compiling node model.dbdemos_dbt_c360.dbt_c360_silver_users
+[0m17:04:30.967392 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbdemos_dbt_c360.dbt_c360_silver_users"
+[0m17:04:30.970838 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_silver_users (compile): 17:04:30.964634 => 17:04:30.970664
+[0m17:04:30.971390 [debug] [Thread-1 (]: Began executing node model.dbdemos_dbt_c360.dbt_c360_silver_users
+[0m17:04:30.976940 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:30.977813 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_silver_users"
+[0m17:04:30.978566 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_users: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_silver_users"} */
+
+      describe extended `asong_dev`.`dbdemos`.`dbt_c360_silver_users`
+  
+[0m17:04:30.979340 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:31.218791 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-7e55-1fa6-b905-1e5cbdf4a9c6
+[0m17:04:31.559793 [debug] [Thread-1 (]: SQL status: OK in 0.5799999833106995 seconds
+[0m17:04:31.577493 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbdemos_dbt_c360.dbt_c360_silver_users"
+[0m17:04:31.579921 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_silver_users"
+[0m17:04:31.580458 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_users: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_silver_users"} */
+
+  
+    
+        create or replace table `asong_dev`.`dbdemos`.`dbt_c360_silver_users`
+      
+      
+    using delta
+      
+      
+      
+      
+      
+      
+      as
+      
+
+-- notes: user data cleaned and anonymized for analysis -- 
+select
+  id as user_id,
+  sha1(email) as email, 
+  to_timestamp(creation_date, "MM-dd-yyyy HH:mm:ss") as creation_date, 
+  to_timestamp(last_activity_date, "MM-dd-yyyy HH:mm:ss") as last_activity_date, 
+  initcap(firstname) as firstname, 
+  initcap(lastname) as lastname, 
+  address, 
+  canal, 
+  country,
+  cast(gender as int),
+  cast(age_group as int), 
+  cast(churn as int) as churn
+from dbdemos.dbt_c360_bronze_users
+  
+[0m17:04:35.929912 [debug] [Thread-1 (]: SQL status: OK in 4.349999904632568 seconds
+[0m17:04:35.936750 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_silver_users (execute): 17:04:30.972101 => 17:04:35.936458
+[0m17:04:35.938207 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_users: ROLLBACK
+[0m17:04:35.939278 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:35.940203 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_silver_users: Close
+[0m17:04:35.941190 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-7e55-1fa6-b905-1e5cbdf4a9c6
+[0m17:04:36.005346 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff945dbaf0>]}
+[0m17:04:36.006430 [info ] [Thread-1 (]: 3 of 4 OK created sql table model dbdemos.dbt_c360_silver_users ................ [[32mOK[0m in 5.04s]
+[0m17:04:36.007245 [debug] [Thread-1 (]: Finished running node model.dbdemos_dbt_c360.dbt_c360_silver_users
+[0m17:04:36.008149 [debug] [Thread-1 (]: Began running node model.dbdemos_dbt_c360.dbt_c360_gold_churn_features
+[0m17:04:36.008774 [info ] [Thread-1 (]: 4 of 4 START sql table model dbdemos.dbt_c360_gold_churn_features .............. [RUN]
+[0m17:04:36.009684 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.dbdemos_dbt_c360.dbt_c360_silver_users, now model.dbdemos_dbt_c360.dbt_c360_gold_churn_features)
+[0m17:04:36.010358 [debug] [Thread-1 (]: Began compiling node model.dbdemos_dbt_c360.dbt_c360_gold_churn_features
+[0m17:04:36.013822 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbdemos_dbt_c360.dbt_c360_gold_churn_features"
+[0m17:04:36.015948 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_gold_churn_features (compile): 17:04:36.010879 => 17:04:36.015763
+[0m17:04:36.016711 [debug] [Thread-1 (]: Began executing node model.dbdemos_dbt_c360.dbt_c360_gold_churn_features
+[0m17:04:36.020004 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:36.020633 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_gold_churn_features"
+[0m17:04:36.021136 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_gold_churn_features: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_gold_churn_features"} */
+
+      describe extended `asong_dev`.`dbdemos`.`dbt_c360_gold_churn_features`
+  
+[0m17:04:36.021708 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:36.281109 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-8159-1cdf-bc40-31ab77a7d811
+[0m17:04:36.708976 [debug] [Thread-1 (]: SQL status: OK in 0.6899999976158142 seconds
+[0m17:04:36.725828 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbdemos_dbt_c360.dbt_c360_gold_churn_features"
+[0m17:04:36.727713 [debug] [Thread-1 (]: Using databricks connection "model.dbdemos_dbt_c360.dbt_c360_gold_churn_features"
+[0m17:04:36.728281 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_gold_churn_features: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "model.dbdemos_dbt_c360.dbt_c360_gold_churn_features"} */
+
+  
+    
+        create or replace table `asong_dev`.`dbdemos`.`dbt_c360_gold_churn_features`
+      
+      
+    using delta
+      
+      
+      
+      
+      
+      
+      as
+      
+
+-- notes: final user table with all information for Analysis / ML -- 
+with 
+    -- block 1 -- 
+    churn_orders_stats as 
+    (select user_id, 
+            count(*) as order_count, 
+            sum(amount) as total_amount, 
+            sum(item_count) as total_item, 
+             max(creation_date) as last_transaction
+      from `asong_dev`.`dbdemos`.`dbt_c360_silver_orders` 
+      group by user_id
+    ),  
+    -- block 2 -- 
+    churn_app_events_stats as 
+    (
+      select first(platform) as platform, 
+             user_id, 
+             count(*) as event_count, 
+             count(distinct session_id) as session_count, 
+             max(to_timestamp(date, "MM-dd-yyyy HH:mm:ss")) as last_event
+       from `asong_dev`.`dbdemos`.`dbt_c360_silver_events` 
+       group by user_id
+    )
+
+select *, 
+       datediff(now(), creation_date) as days_since_creation,
+       datediff(now(), last_activity_date) as days_since_last_activity,
+       datediff(now(), last_event) as days_last_event
+from `asong_dev`.`dbdemos`.`dbt_c360_silver_users` 
+inner join churn_orders_stats using (user_id)
+inner join churn_app_events_stats using (user_id)
+  
+[0m17:04:42.960997 [debug] [Thread-1 (]: SQL status: OK in 6.230000019073486 seconds
+[0m17:04:43.077110 [debug] [Thread-1 (]: Timing info for model.dbdemos_dbt_c360.dbt_c360_gold_churn_features (execute): 17:04:36.017315 => 17:04:43.075569
+[0m17:04:43.079181 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_gold_churn_features: ROLLBACK
+[0m17:04:43.081476 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:43.082848 [debug] [Thread-1 (]: On model.dbdemos_dbt_c360.dbt_c360_gold_churn_features: Close
+[0m17:04:43.085176 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-8159-1cdf-bc40-31ab77a7d811
+[0m17:04:43.161134 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '09462c57-bacf-4147-a4b0-7fc9f1850552', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff947e41c0>]}
+[0m17:04:43.164315 [info ] [Thread-1 (]: 4 of 4 OK created sql table model dbdemos.dbt_c360_gold_churn_features ......... [[32mOK[0m in 7.15s]
+[0m17:04:43.169121 [debug] [Thread-1 (]: Finished running node model.dbdemos_dbt_c360.dbt_c360_gold_churn_features
+[0m17:04:43.174488 [debug] [MainThread]: On master: ROLLBACK
+[0m17:04:43.176124 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:04:43.443667 [info ] [MainThread]: databricks-sql-connector adapter: Successfully opened session 01ee271f-859c-14c6-ba17-0f5ef8034cab
+[0m17:04:43.452413 [debug] [MainThread]: Databricks adapter: NotImplemented: rollback
+[0m17:04:43.453105 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:43.453610 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m17:04:43.454107 [debug] [MainThread]: On master: ROLLBACK
+[0m17:04:43.454589 [debug] [MainThread]: Databricks adapter: NotImplemented: rollback
+[0m17:04:43.454988 [debug] [MainThread]: On master: Close
+[0m17:04:43.455466 [info ] [MainThread]: databricks-sql-connector adapter: Closing session 01ee271f-859c-14c6-ba17-0f5ef8034cab
+[0m17:04:43.519331 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:04:43.521059 [debug] [MainThread]: Connection 'model.dbdemos_dbt_c360.dbt_c360_gold_churn_features' was properly closed.
+[0m17:04:43.523582 [info ] [MainThread]: 
+[0m17:04:43.531315 [info ] [MainThread]: Finished running 4 table models in 0 hours 0 minutes and 33.62 seconds (33.62s).
+[0m17:04:43.536648 [debug] [MainThread]: Command end result
+[0m17:04:43.546279 [info ] [MainThread]: 
+[0m17:04:43.546946 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:04:43.547451 [info ] [MainThread]: 
+[0m17:04:43.547907 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m17:04:43.548535 [debug] [MainThread]: Command `dbt run` succeeded at 17:04:43.548462 after 34.28 seconds
+[0m17:04:43.549110 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa9267e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff945dbaf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa99c6fb0>]}
+[0m17:04:43.549678 [debug] [MainThread]: Flushing usage events
+[0m17:04:46.348672 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7cb77ee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b4686d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b4683d0>]}
+
+
+============================== 17:04:46.352510 | 92fded80-db39-4988-a76e-94124c3c1ffb ==============================
+[0m17:04:46.352510 [info ] [MainThread]: Running with dbt=1.5.3
+[0m17:04:46.353103 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/usr/local/airflow/dags/dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/usr/local/airflow/dags/dbt/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m17:04:46.777143 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '92fded80-db39-4988-a76e-94124c3c1ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f14f130>]}
+[0m17:04:46.786176 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '92fded80-db39-4988-a76e-94124c3c1ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff683c6f80>]}
+[0m17:04:46.786860 [info ] [MainThread]: Registered adapter: databricks=1.5.5
+[0m17:04:46.795708 [debug] [MainThread]: checksum: d91324b50612e0c4823cec6657ec795d80c11aba9d5b50e83fb26de63277dec4, vars: {}, profile: , target: , version: 1.5.3
+[0m17:04:46.819088 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:04:46.819668 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:04:46.820319 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.dbdemos_dbt_c360.staging
+[0m17:04:46.824452 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '92fded80-db39-4988-a76e-94124c3c1ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff681ce110>]}
+[0m17:04:46.832257 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '92fded80-db39-4988-a76e-94124c3c1ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff681a0b80>]}
+[0m17:04:46.832911 [info ] [MainThread]: Found 4 models, 6 tests, 0 snapshots, 0 analyses, 415 macros, 0 operations, 3 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m17:04:46.833391 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '92fded80-db39-4988-a76e-94124c3c1ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff681a0c70>]}
+[0m17:04:46.834529 [info ] [MainThread]: 
+[0m17:04:46.835252 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m17:04:46.836317 [debug] [ThreadPool]: Acquiring new databricks connection 'list_asong_dev'
+[0m17:04:46.836775 [debug] [ThreadPool]: Using databricks connection "list_asong_dev"
+[0m17:04:46.837241 [debug] [ThreadPool]: On list_asong_dev: GetSchemas(database=`asong_dev`, schema=None)
+[0m17:04:46.837664 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:04:47.040357 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-87c2-1578-bd52-35efa5c41150
+[0m17:04:47.707127 [debug] [ThreadPool]: SQL status: OK in 0.8700000047683716 seconds
+[0m17:04:47.719403 [debug] [ThreadPool]: On list_asong_dev: Close
+[0m17:04:47.721149 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-87c2-1578-bd52-35efa5c41150
+[0m17:04:47.800842 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_asong_dev, now create_asong_dev_dbdemos_dbt_test__audit)
+[0m17:04:47.805182 [debug] [ThreadPool]: Creating schema "database: "asong_dev"
+schema: "dbdemos_dbt_test__audit"
+"
+[0m17:04:47.832718 [debug] [ThreadPool]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:47.834422 [debug] [ThreadPool]: Using databricks connection "create_asong_dev_dbdemos_dbt_test__audit"
+[0m17:04:47.835792 [debug] [ThreadPool]: On create_asong_dev_dbdemos_dbt_test__audit: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "connection_name": "create_asong_dev_dbdemos_dbt_test__audit"} */
+create schema if not exists `asong_dev`.`dbdemos_dbt_test__audit`
+  
+[0m17:04:47.836786 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:04:48.045081 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-885d-1a0e-b722-12fc748d237a
+[0m17:04:48.197906 [debug] [ThreadPool]: SQL status: OK in 0.36000001430511475 seconds
+[0m17:04:48.203992 [debug] [ThreadPool]: Spark adapter: NotImplemented: commit
+[0m17:04:48.205580 [debug] [ThreadPool]: On create_asong_dev_dbdemos_dbt_test__audit: ROLLBACK
+[0m17:04:48.206633 [debug] [ThreadPool]: Databricks adapter: NotImplemented: rollback
+[0m17:04:48.214210 [debug] [ThreadPool]: On create_asong_dev_dbdemos_dbt_test__audit: Close
+[0m17:04:48.216216 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-885d-1a0e-b722-12fc748d237a
+[0m17:04:48.294046 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_asong_dev_dbdemos_dbt_test__audit, now list_asong_dev_dbdemos_dbt_test__audit)
+[0m17:04:48.306475 [debug] [ThreadPool]: Using databricks connection "list_asong_dev_dbdemos_dbt_test__audit"
+[0m17:04:48.308491 [debug] [ThreadPool]: On list_asong_dev_dbdemos_dbt_test__audit: GetTables(database=asong_dev, schema=dbdemos_dbt_test__audit, identifier=None)
+[0m17:04:48.309955 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:04:48.490685 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-88a1-1735-98b5-bf62d296013a
+[0m17:04:49.334760 [debug] [ThreadPool]: SQL status: OK in 1.0199999809265137 seconds
+[0m17:04:49.337750 [debug] [ThreadPool]: On list_asong_dev_dbdemos_dbt_test__audit: Close
+[0m17:04:49.338532 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-88a1-1735-98b5-bf62d296013a
+[0m17:04:49.405467 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_asong_dev_dbdemos_dbt_test__audit, now list_asong_dev_dbdemos)
+[0m17:04:49.408299 [debug] [ThreadPool]: Using databricks connection "list_asong_dev_dbdemos"
+[0m17:04:49.408879 [debug] [ThreadPool]: On list_asong_dev_dbdemos: GetTables(database=asong_dev, schema=dbdemos, identifier=None)
+[0m17:04:49.409385 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:04:49.617286 [info ] [ThreadPool]: databricks-sql-connector adapter: Successfully opened session 01ee271f-894a-1c15-9f21-eda0b5570fba
+[0m17:04:50.323478 [debug] [ThreadPool]: SQL status: OK in 0.9100000262260437 seconds
+[0m17:04:50.326854 [debug] [ThreadPool]: On list_asong_dev_dbdemos: Close
+[0m17:04:50.327585 [info ] [ThreadPool]: databricks-sql-connector adapter: Closing session 01ee271f-894a-1c15-9f21-eda0b5570fba
+[0m17:04:50.414489 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '92fded80-db39-4988-a76e-94124c3c1ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff68374a90>]}
+[0m17:04:50.415814 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:50.416804 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m17:04:50.418151 [info ] [MainThread]: Concurrency: 1 threads (target='local')
+[0m17:04:50.419106 [info ] [MainThread]: 
+[0m17:04:50.444477 [debug] [Thread-1 (]: Began running node test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3
+[0m17:04:50.445742 [info ] [Thread-1 (]: 1 of 6 START test accepted_values_dbt_c360_silver_users_churn__1__0 ............ [RUN]
+[0m17:04:50.447067 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_asong_dev_dbdemos, now test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3)
+[0m17:04:50.448142 [debug] [Thread-1 (]: Began compiling node test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3
+[0m17:04:50.459720 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3"
+[0m17:04:50.462241 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3 (compile): 17:04:50.448972 => 17:04:50.462025
+[0m17:04:50.462825 [debug] [Thread-1 (]: Began executing node test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3
+[0m17:04:50.475845 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3"
+[0m17:04:50.477823 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:50.478247 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3"
+[0m17:04:50.478687 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        churn as value_field,
+        count(*) as n_records
+
+    from `asong_dev`.`dbdemos`.`dbt_c360_silver_users`
+    group by churn
+
+)
+
+select *
+from all_values
+where value_field not in (
+    '1','0'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m17:04:50.479110 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:50.656646 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-89ea-1e57-b397-348268e39179
+[0m17:04:51.132450 [debug] [Thread-1 (]: SQL status: OK in 0.6499999761581421 seconds
+[0m17:04:51.135667 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3 (execute): 17:04:50.463265 => 17:04:51.135501
+[0m17:04:51.136226 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3: ROLLBACK
+[0m17:04:51.136723 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:51.137181 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3: Close
+[0m17:04:51.137673 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-89ea-1e57-b397-348268e39179
+[0m17:04:51.200506 [info ] [Thread-1 (]: 1 of 6 PASS accepted_values_dbt_c360_silver_users_churn__1__0 .................. [[32mPASS[0m in 0.75s]
+[0m17:04:51.201575 [debug] [Thread-1 (]: Finished running node test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3
+[0m17:04:51.202269 [debug] [Thread-1 (]: Began running node test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero
+[0m17:04:51.202938 [info ] [Thread-1 (]: 2 of 6 START test assert_orders_amount_must_be_above_zero ...................... [RUN]
+[0m17:04:51.203927 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.dbdemos_dbt_c360.accepted_values_dbt_c360_silver_users_churn__1__0.23dddbabf3, now test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero)
+[0m17:04:51.204492 [debug] [Thread-1 (]: Began compiling node test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero
+[0m17:04:51.207703 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"
+[0m17:04:51.210106 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero (compile): 17:04:51.204956 => 17:04:51.209922
+[0m17:04:51.210701 [debug] [Thread-1 (]: Began executing node test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero
+[0m17:04:51.217904 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"
+[0m17:04:51.218604 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"} */
+drop table if exists `asong_dev`.`dbdemos_dbt_test__audit`.`assert_orders_amount_must_be_above_zero`
+[0m17:04:51.219175 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:51.438015 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-8a63-1107-98c8-c50a181e58c4
+[0m17:04:52.201483 [debug] [Thread-1 (]: SQL status: OK in 0.9800000190734863 seconds
+[0m17:04:52.254183 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:52.255196 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"
+[0m17:04:52.255914 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"} */
+
+        
+  
+    
+        create or replace table `asong_dev`.`dbdemos_dbt_test__audit`.`assert_orders_amount_must_be_above_zero`
+      
+      
+    using delta
+      
+      
+      
+      
+      
+      
+      as
+      
+
+-- notes: quarantine records and isolate them if the total sales amount is negative -- 
+select 
+ user_id,
+ sum(amount) as total_amount 
+from `asong_dev`.`dbdemos`.`dbt_c360_silver_orders`
+group by 1 
+having not (total_amount >= 0)
+  
+    
+[0m17:04:55.217143 [debug] [Thread-1 (]: SQL status: OK in 2.9600000381469727 seconds
+[0m17:04:55.223270 [debug] [Thread-1 (]: Spark adapter: NotImplemented: commit
+[0m17:04:55.228921 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"
+[0m17:04:55.235380 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"
+[0m17:04:55.237303 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+        select *
+        from `asong_dev`.`dbdemos_dbt_test__audit`.`assert_orders_amount_must_be_above_zero`
+    
+      
+    ) dbt_internal_test
+[0m17:04:55.560158 [debug] [Thread-1 (]: SQL status: OK in 0.3199999928474426 seconds
+[0m17:04:55.567436 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero (execute): 17:04:51.211186 => 17:04:55.566270
+[0m17:04:55.569108 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero: ROLLBACK
+[0m17:04:55.574628 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:55.576752 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero: Close
+[0m17:04:55.578223 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-8a63-1107-98c8-c50a181e58c4
+[0m17:04:55.649213 [info ] [Thread-1 (]: 2 of 6 PASS assert_orders_amount_must_be_above_zero ............................ [[32mPASS[0m in 4.45s]
+[0m17:04:55.654961 [debug] [Thread-1 (]: Finished running node test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero
+[0m17:04:55.656372 [debug] [Thread-1 (]: Began running node test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5
+[0m17:04:55.657528 [info ] [Thread-1 (]: 3 of 6 START test not_null_dbt_c360_silver_users_user_id ....................... [RUN]
+[0m17:04:55.660389 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.dbdemos_dbt_c360.assert_orders_amount_must_be_above_zero, now test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5)
+[0m17:04:55.661495 [debug] [Thread-1 (]: Began compiling node test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5
+[0m17:04:55.682382 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5"
+[0m17:04:55.685044 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5 (compile): 17:04:55.670373 => 17:04:55.684788
+[0m17:04:55.685890 [debug] [Thread-1 (]: Began executing node test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5
+[0m17:04:55.688669 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5"
+[0m17:04:55.690963 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:55.691527 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5"
+[0m17:04:55.692104 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select user_id
+from `asong_dev`.`dbdemos`.`dbt_c360_silver_users`
+where user_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m17:04:55.692844 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:55.873120 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-8d07-15e6-af8b-13b5cc0f3a02
+[0m17:04:56.371416 [debug] [Thread-1 (]: SQL status: OK in 0.6800000071525574 seconds
+[0m17:04:56.383759 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5 (execute): 17:04:55.686428 => 17:04:56.382425
+[0m17:04:56.385813 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5: ROLLBACK
+[0m17:04:56.387415 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:04:56.389069 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5: Close
+[0m17:04:56.390317 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-8d07-15e6-af8b-13b5cc0f3a02
+[0m17:04:56.476835 [info ] [Thread-1 (]: 3 of 6 PASS not_null_dbt_c360_silver_users_user_id ............................. [[32mPASS[0m in 0.82s]
+[0m17:04:56.481107 [debug] [Thread-1 (]: Finished running node test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5
+[0m17:04:56.484512 [debug] [Thread-1 (]: Began running node test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838
+[0m17:04:56.486841 [info ] [Thread-1 (]: 4 of 6 START test relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_  [RUN]
+[0m17:04:56.491117 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.dbdemos_dbt_c360.not_null_dbt_c360_silver_users_user_id.b64ba654d5, now test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838)
+[0m17:04:56.494045 [debug] [Thread-1 (]: Began compiling node test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838
+[0m17:04:56.507084 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838"
+[0m17:04:56.510674 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838 (compile): 17:04:56.495699 => 17:04:56.510357
+[0m17:04:56.511706 [debug] [Thread-1 (]: Began executing node test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838
+[0m17:04:56.515980 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838"
+[0m17:04:56.519059 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:04:56.519917 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838"
+[0m17:04:56.520752 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select user_id as from_field
+    from `asong_dev`.`dbdemos`.`dbt_c360_silver_orders`
+    where user_id is not null
+),
+
+parent as (
+    select user_id as to_field
+    from `asong_dev`.`dbdemos`.`dbt_c360_silver_users`
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m17:04:56.521946 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:04:56.800256 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-8d94-1d52-8396-c8e9a9015039
+[0m17:05:01.637683 [debug] [Thread-1 (]: SQL status: OK in 5.119999885559082 seconds
+[0m17:05:01.647382 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838 (execute): 17:04:56.512766 => 17:05:01.646017
+[0m17:05:01.648972 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838: ROLLBACK
+[0m17:05:01.650056 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:05:01.651703 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838: Close
+[0m17:05:01.654941 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-8d94-1d52-8396-c8e9a9015039
+[0m17:05:01.719997 [info ] [Thread-1 (]: 4 of 6 PASS relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_  [[32mPASS[0m in 5.23s]
+[0m17:05:01.724135 [debug] [Thread-1 (]: Finished running node test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838
+[0m17:05:01.725644 [debug] [Thread-1 (]: Began running node test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9
+[0m17:05:01.727013 [info ] [Thread-1 (]: 5 of 6 START test unique_dbt_c360_silver_orders_order_id ....................... [RUN]
+[0m17:05:01.730596 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.dbdemos_dbt_c360.relationships_dbt_c360_silver_orders_user_id__user_id__ref_dbt_c360_silver_users_.ad4f2b2838, now test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9)
+[0m17:05:01.731902 [debug] [Thread-1 (]: Began compiling node test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9
+[0m17:05:01.744187 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9"
+[0m17:05:01.748496 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9 (compile): 17:05:01.733804 => 17:05:01.748156
+[0m17:05:01.749399 [debug] [Thread-1 (]: Began executing node test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9
+[0m17:05:01.753518 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9"
+[0m17:05:01.755745 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:05:01.756237 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9"
+[0m17:05:01.756726 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from `asong_dev`.`dbdemos`.`dbt_c360_silver_orders`
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m17:05:01.757195 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:05:01.939317 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-90a5-18c6-8a6c-50206e2b6208
+[0m17:05:02.758041 [debug] [Thread-1 (]: SQL status: OK in 1.0 seconds
+[0m17:05:02.768412 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9 (execute): 17:05:01.749978 => 17:05:02.767906
+[0m17:05:02.769835 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9: ROLLBACK
+[0m17:05:02.771396 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:05:02.773785 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9: Close
+[0m17:05:02.775710 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-90a5-18c6-8a6c-50206e2b6208
+[0m17:05:02.862577 [info ] [Thread-1 (]: 5 of 6 PASS unique_dbt_c360_silver_orders_order_id ............................. [[32mPASS[0m in 1.13s]
+[0m17:05:02.871317 [debug] [Thread-1 (]: Finished running node test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9
+[0m17:05:02.873667 [debug] [Thread-1 (]: Began running node test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63
+[0m17:05:02.875123 [info ] [Thread-1 (]: 6 of 6 START test unique_dbt_c360_silver_users_user_id ......................... [RUN]
+[0m17:05:02.877911 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.dbdemos_dbt_c360.unique_dbt_c360_silver_orders_order_id.99c8c011b9, now test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63)
+[0m17:05:02.879525 [debug] [Thread-1 (]: Began compiling node test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63
+[0m17:05:02.896306 [debug] [Thread-1 (]: Writing injected SQL for node "test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63"
+[0m17:05:02.903244 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63 (compile): 17:05:02.881563 => 17:05:02.902798
+[0m17:05:02.905012 [debug] [Thread-1 (]: Began executing node test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63
+[0m17:05:02.910063 [debug] [Thread-1 (]: Writing runtime sql for node "test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63"
+[0m17:05:02.914771 [debug] [Thread-1 (]: Spark adapter: NotImplemented: add_begin_query
+[0m17:05:02.915631 [debug] [Thread-1 (]: Using databricks connection "test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63"
+[0m17:05:02.916433 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63: /* {"app": "dbt", "dbt_version": "1.5.3", "dbt_databricks_version": "1.5.5", "databricks_sql_connector_version": "2.7.0", "profile_name": "dbdemos_dbt_c360", "target_name": "local", "node_id": "test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    user_id as unique_field,
+    count(*) as n_records
+
+from `asong_dev`.`dbdemos`.`dbt_c360_silver_users`
+where user_id is not null
+group by user_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m17:05:02.917483 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:05:03.107440 [info ] [Thread-1 (]: databricks-sql-connector adapter: Successfully opened session 01ee271f-9157-1a81-8c0e-4f1bd5139ca2
+[0m17:05:03.663077 [debug] [Thread-1 (]: SQL status: OK in 0.75 seconds
+[0m17:05:03.675594 [debug] [Thread-1 (]: Timing info for test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63 (execute): 17:05:02.906163 => 17:05:03.675021
+[0m17:05:03.677377 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63: ROLLBACK
+[0m17:05:03.678855 [debug] [Thread-1 (]: Databricks adapter: NotImplemented: rollback
+[0m17:05:03.679480 [debug] [Thread-1 (]: On test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63: Close
+[0m17:05:03.680137 [info ] [Thread-1 (]: databricks-sql-connector adapter: Closing session 01ee271f-9157-1a81-8c0e-4f1bd5139ca2
+[0m17:05:03.758455 [info ] [Thread-1 (]: 6 of 6 PASS unique_dbt_c360_silver_users_user_id ............................... [[32mPASS[0m in 0.88s]
+[0m17:05:03.762182 [debug] [Thread-1 (]: Finished running node test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63
+[0m17:05:03.767945 [debug] [MainThread]: On master: ROLLBACK
+[0m17:05:03.769453 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:05:03.962134 [info ] [MainThread]: databricks-sql-connector adapter: Successfully opened session 01ee271f-91da-1179-81d1-8269b4c7e76a
+[0m17:05:03.968431 [debug] [MainThread]: Databricks adapter: NotImplemented: rollback
+[0m17:05:03.969937 [debug] [MainThread]: Spark adapter: NotImplemented: add_begin_query
+[0m17:05:03.971190 [debug] [MainThread]: Spark adapter: NotImplemented: commit
+[0m17:05:03.972217 [debug] [MainThread]: On master: ROLLBACK
+[0m17:05:03.973482 [debug] [MainThread]: Databricks adapter: NotImplemented: rollback
+[0m17:05:03.974583 [debug] [MainThread]: On master: Close
+[0m17:05:03.975813 [info ] [MainThread]: databricks-sql-connector adapter: Closing session 01ee271f-91da-1179-81d1-8269b4c7e76a
+[0m17:05:04.042172 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:05:04.043598 [debug] [MainThread]: Connection 'test.dbdemos_dbt_c360.unique_dbt_c360_silver_users_user_id.9f3c723e63' was properly closed.
+[0m17:05:04.045217 [info ] [MainThread]: 
+[0m17:05:04.046319 [info ] [MainThread]: Finished running 6 tests in 0 hours 0 minutes and 17.21 seconds (17.21s).
+[0m17:05:04.048557 [debug] [MainThread]: Command end result
+[0m17:05:04.061905 [info ] [MainThread]: 
+[0m17:05:04.062877 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:05:04.063575 [info ] [MainThread]: 
+[0m17:05:04.064292 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+[0m17:05:04.065272 [debug] [MainThread]: Command `dbt test` succeeded at 17:05:04.065156 after 17.72 seconds
+[0m17:05:04.065855 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7cb77ee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff683c6f80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff681a0e50>]}
+[0m17:05:04.066422 [debug] [MainThread]: Flushing usage events
