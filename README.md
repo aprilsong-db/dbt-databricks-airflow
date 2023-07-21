@@ -1,12 +1,12 @@
 Overview
 ========
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+This project was generated to show how to stream data from S3 using Databricks Autoloader, orchestrate your Jobs with Airflow, and incorporate dbt pipelines.
 
 Project Contents
 ================
 
-Your Astro project contains the following files and folders:
+This project uses Astronomer. Your Astro project contains the following files and folders:
 
 - dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes an example DAG that runs every 30 minutes and simply prints the current date. It also includes an empty 'my_custom_function' that you can fill out to execute Python code.
 - Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
@@ -16,6 +16,10 @@ Your Astro project contains the following files and folders:
     - in this project, we specified the requirements for the astro-provider-databricks and dbt-databricks
 - plugins: Add custom or community plugins for your project to this file. It is empty by default.
 - airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+
+Within the dags folder, there are two subfolders: databricks and dbt. The databricks folder contains scripts to stream the example data into s3 (00-start-data-stream.py), ingest the raw data using autoloader (01-data-ingestion), and create a machine learning model (03-churn-prediction)
+
+The dbt folder contains a dbt project with example dbt models to build a pipeline to move the data through the medallion architecture (bronze -> silver -> gold).
 
 Getting Started
 ================
