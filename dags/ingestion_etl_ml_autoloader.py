@@ -118,9 +118,10 @@ with DAG(
     schedule_interval=None,
 ) as dag:
 
-    dbt_ingest = BashOperator(
-        task_id="dbt_ingest",
-        bash_command=f"dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
+    databricks_ingest = DatabricksSubmitRunOperator(
+        task_id="databricks_ingest",
+        json=autoloader_ingestion_job,
+        databricks_conn_id=DATABRICKS_CONN_ID,
     )
 
     dbt_run = BashOperator(
@@ -139,4 +140,4 @@ with DAG(
         json=ml_churn_pred_job,
     )
 
-    dbt_ingest >> dbt_run >> dbt_test >> databricks_churn_prediction
+    databricks_ingest >> dbt_run >> dbt_test >> databricks_churn_prediction
