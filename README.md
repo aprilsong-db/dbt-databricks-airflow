@@ -3,8 +3,8 @@ Overview
 
 This demo shows
 1. two methods to incrementally ingest raw data files from cloud storage into `bronze` Delta tables
-    - Spark Structured Stream and Autoloader
-    - dbt Streaming Tables 
+    - [Spark Structured Streaming and Autoloader](https://docs.databricks.com/en/ingestion/auto-loader/index.html)
+    - [dbt Streaming Tables](https://docs.getdbt.com/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables) 
 1. orchestration of ingestion and dbt transformations on Databricks with Airflow 
 1. loading an ML model from MLflow as a SQL function after dbt transformations are complete and applied to `dbt_c360_gold_churn_features`
 
@@ -102,7 +102,7 @@ Trigger once data has started landing in your S3 bucket. All new files available
 
 ### `dbt_streaming_dag`
 ![Alt text](image-2.png)
-Trigger once data has started landing in your S3 bucket. All new files available at run time will be ingested into bronze tables using dbt streaming tables. 
+Trigger once data has started landing in your S3 bucket. All new files available at run time will be ingested into bronze tables using [dbt streaming tables](https://docs.getdbt.com/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables) . 
 
 ## Shut Down
 To shut down Airflow, run
