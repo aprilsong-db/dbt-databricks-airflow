@@ -98,11 +98,20 @@ Trigger `start_data_stream_dag` to start and simulate data stream representing u
 ## Airflow DAGs
 ### `autoloader_dbt_dag`
 ![Alt text](image-3.png)
-Trigger once data has started landing in your S3 bucket. All new files available at run time will be ingested. The corresponding [Databricks job](dags/databricks/01-data-ingestion.py) run will show counts of the raw bronze tables after each ingestion. Trigger the job again to see and confirm new files that arrived after the first run have been incrementally ingested. Note - there are no changes in number of users in this demo. 
+`databricks_ingest`: Ingest files landing in S3 with Spark Structured Streaming and Autoloader into bronze tables  
+`dbt_run`: Run dbt models to generate silver and gold tables  
+`dbt_test`: Test dbt models  
+`databricks_ml_churn_pred`: Train and use model to generate predictions  
 
 ### `dbt_streaming_dag`
 ![Alt text](image-2.png)
-Trigger once data has started landing in your S3 bucket. All new files available at run time will be ingested into bronze tables using [dbt streaming tables](https://docs.getdbt.com/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables) . 
+`dbt_run`: Run dbt models to ingest files landing in S3 with Streaming Tables and generate silver and gold tables  
+`dbt_test`: Test dbt models  
+`databricks_ml_churn_pred`: Train and use model to generate predictions    
+
+
+References:   
+[dbt streaming tables](https://docs.getdbt.com/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables)  
 
 ## Shut Down
 To shut down Airflow, run
