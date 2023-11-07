@@ -10,7 +10,6 @@ seed-paths: ["seeds"]
 test-paths: ["tests"]
 analysis-paths: ["analysis"]
 macro-paths: ["macros"]
-
 target-path: "target"
 clean-targets:
     - "target"
@@ -21,6 +20,7 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 vars:
   uc_schema: "{{ env_var('DBT_TARGET_UC_SCHEMA') }}"
+  s3_path: "{{ env_var('S3_BASE_PATH') }}"
 
 models:
   dbdemos_dbt_c360:

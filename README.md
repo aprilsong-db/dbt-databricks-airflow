@@ -88,7 +88,7 @@ astro dev start
 
 Running this demo
 ================
-1. Trigger the `start_s3_data` DAG to start and simulate data stream representing users, orders, and event data to your S3 bucket. This will be the raw json/csv files that we will then ingest with autoloader. Job will automatically timeout and end after 1 hour - you can update `timeout_seconds` in [/dags/start_data_stream.py](/dags/start_data_stream.py).
+1. Trigger the `start_data_stream` DAG to start and simulate data stream representing users, orders, and event data to your S3 bucket. This will be the raw json/csv files that we will then ingest with autoloader. Job will automatically timeout and end after 1 hour - you can update `timeout_seconds` in [/dags/start_data_stream.py](/dags/start_data_stream.py).
 2. Trigger the `autoloader_dbt_dag` DAG once data has started landing in your S3 bucket. All new files available at run time will be ingested. The corresponding [Databricks job](dags/databricks/01-data-ingestion.py) run will show counts of the raw bronze tables after each ingestion. Trigger the job again to see and confirm new files that arrived after the first run have been incrementally ingested. Note - there are no changes in number of users in this demo. 
 
 To shut down Airflow, run

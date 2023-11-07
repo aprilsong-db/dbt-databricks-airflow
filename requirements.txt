@@ -1,2 +1,5 @@
-astro-provider-databricks==0.1.3
-dbt-databricks==1.5.5
+astro-provider-databricks
+dbt-databricks>=1.6
+pyyaml==6.0.1
+# databricks-sql-connector~=2.7.0
+# pyyaml==5.3.1
