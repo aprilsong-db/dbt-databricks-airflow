@@ -1,17 +1,19 @@
 Overview
 ========
 
-This demo shows how to 
-1. incrementally ingest raw data files from cloud storage into `bronze` Delta tables using Databricks Autoloader
-1. orchestrate ingestion and dbt transformations with Airflow on Databricks
-1. load an ML model from MLflow as a SQL function after dbt transformations are complete and applied to `dbt_c360_gold_churn_features`
+This demo shows
+1. two methods to incrementally ingest raw data files from cloud storage into `bronze` Delta tables
+    - Spark Structured Stream and Autoloader
+    - dbt Streaming Tables 
+1. orchestration of ingestion and dbt transformations on Databricks with Airflow 
+1. loading an ML model from MLflow as a SQL function after dbt transformations are complete and applied to `dbt_c360_gold_churn_features`
 
 Project Contents
 ================
 
 This project uses Astronomer to set up a project contains the following files and folders:
 
-- `dags`: This folder contains the Python files for your Airflow DAGs. 
+- `dags`: This folder contains Airflow DAGs and source code. 
     - `/databricks`: contains scripts to set up an example data stream of raw json and csv files landing into S3 (00-start-data-stream.py), ingest the raw data using autoloader (01-data-ingestion), and generate predictions using a machine learning model (03-churn-prediction)
     - `/dbt`: contains a dbt project with example dbt models to build a pipeline to move the data through the medallion architecture (bronze -> silver -> gold)
 - `Dockerfile`: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
@@ -88,9 +90,21 @@ astro dev start
 
 Running this demo
 ================
-1. Trigger the `start_data_stream` DAG to start and simulate data stream representing users, orders, and event data to your S3 bucket. This will be the raw json/csv files that we will then ingest with autoloader. Job will automatically timeout and end after 1 hour - you can update `timeout_seconds` in [/dags/start_data_stream.py](/dags/start_data_stream.py).
-2. Trigger the `autoloader_dbt_dag` DAG once data has started landing in your S3 bucket. All new files available at run time will be ingested. The corresponding [Databricks job](dags/databricks/01-data-ingestion.py) run will show counts of the raw bronze tables after each ingestion. Trigger the job again to see and confirm new files that arrived after the first run have been incrementally ingested. Note - there are no changes in number of users in this demo. 
 
+## Simulate data stream for ingestion
+Trigger `start_data_stream_dag` to start and simulate data stream representing users, orders, and event data to your S3 bucket. This will be the raw json/csv files that we will then ingest with autoloader. Job will automatically timeout and end after 1 hour - you can update `timeout_seconds` in [/dags/start_data_stream_dag.py](/dags/start_data_stream_dag.py).
+
+
+## Airflow DAGs
+### `autoloader_dbt_dag`
+![Alt text](image-3.png)
+Trigger once data has started landing in your S3 bucket. All new files available at run time will be ingested. The corresponding [Databricks job](dags/databricks/01-data-ingestion.py) run will show counts of the raw bronze tables after each ingestion. Trigger the job again to see and confirm new files that arrived after the first run have been incrementally ingested. Note - there are no changes in number of users in this demo. 
+
+### `dbt_streaming_dag`
+![Alt text](image-2.png)
+Trigger once data has started landing in your S3 bucket. All new files available at run time will be ingested into bronze tables using dbt streaming tables. 
+
+## Shut Down
 To shut down Airflow, run
 ```sh
 astro dev stop
