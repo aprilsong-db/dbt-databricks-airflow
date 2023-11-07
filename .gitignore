@@ -9,3 +9,4 @@ astro
 .airflowignore
 dags/dbt/logs/
 dags/dbt/target/
+.vscode
